@@ -245,28 +245,53 @@ let anotherWidth=$(".side-bar").outerWidth();
 let finalWidth=sidebarWidth-anotherWidth;
 console.log(finalWidth)
 $('header').css('left',`-${finalWidth}px`);
-$('#open').click(function(){
+$('.menu i').click(function(){
     if($('header').css('left')===`0px`){
         $("header").animate({left:`-${finalWidth}`},1000);
+        $('#open').removeClass("d-none");
+        $("#close").addClass("d-none");
+        $("#search").animate({top:'50%',opacity:0},200,function(){
+            $("#category").animate({top:'50%',opacity:0},200,function(){
+                $("#area").animate({top:'50%',opacity:0},200,function(){
+                    $("#ingredaint").animate({top:'50%',opacity:0},200,function(){
+                        $("#contact").animate({top:'50%',opacity:0},200)
+                    })
+                })
+            })
+        })
+
     }
     else{
-        $("header").animate({left:`0px`},1000);
-        $(".item1").animate({
-            opacity: "1",
-            paddingTop: "25px",
-        }, 2100), $(".nav .item2").animate({
-            opacity: "1",
-            paddingTop: "25px",
-        }, 2300), $(".nav .item3").animate({
-            opacity: "1",
-            paddingTop: "25px",
-        }, 2400), $(".nav .item4").animate({
-            opacity: "1",
-            paddingTop: "25px",
-        }, 2500), $(".nav .item5").animate({
-            opacity: "1",
-            paddingTop: "25px",
-        }, 2600)
+        $("header").animate({left:`0px`},1000,function(){
+            $("#search").animate({top:'0',opacity:1},200,function(){
+                $("#category").animate({top:'0',opacity:1},200,function(){
+                    $("#area").animate({top:'0',opacity:1},200,function(){
+                        $("#ingredaint").animate({top:'0',opacity:1},200,function(){
+                            $("#contact").animate({top:'0',opacity:1},200)
+                        })
+                    })
+                })
+            })
+        });
+        $('#close').removeClass("d-none");
+        $("#open").addClass("d-none");
+    
+        // $(".item1").animate({
+        //     opacity: "1",
+        //     paddingTop: "25px",
+        // }, 2100), $(".nav .item2").animate({
+        //     opacity: "1",
+        //     paddingTop: "25px",
+        // }, 2300), $(".nav .item3").animate({
+        //     opacity: "1",
+        //     paddingTop: "25px",
+        // }, 2400), $(".nav .item4").animate({
+        //     opacity: "1",
+        //     paddingTop: "25px",
+        // }, 2500), $(".nav .item5").animate({
+        //     opacity: "1",
+        //     paddingTop: "25px",
+        // }, 2600)
     }
 })
 // form validation
